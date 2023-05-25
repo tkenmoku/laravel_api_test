@@ -1,0 +1,16 @@
+# ディレクトリ
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+
+# ファイル
+.env
+.env.*
+.DS_Store
+Thumbs.db
