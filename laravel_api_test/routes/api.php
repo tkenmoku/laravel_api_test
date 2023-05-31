@@ -15,6 +15,10 @@ use app\Http\Controllers\PostsController;
 |
 */
 
+Route::get('ok', function () {
+    return 'OK';
+});
+
 Route::get('/posts', [PostsController::class, 'index']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
