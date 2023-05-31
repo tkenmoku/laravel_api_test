@@ -10,4 +10,10 @@ class PostsController extends Controller
     {
         return "OK";
     }
+
+    public function edit()
+    {
+        return "OK";
+    }
+
 }
