@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PostsController;
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -26,7 +28,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
-    // protected $namespace = 'App\\Http\\Controllers';
+    protected $namespace = [
+        PostsController,
+    ];
 
     /**
      * Define your route model bindings, pattern filters, etc.
