@@ -18,4 +18,4 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /home/bisquebison1/www/laravel_api_test/
+        server-dir: /home/bisquebison1/www/
