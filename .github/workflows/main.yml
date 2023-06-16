@@ -43,8 +43,10 @@ jobs:
       - name: SetUp laravel project
         run: |
              echo "${{ secrets.LARAVEL_ENV }}" > .env
-             php artisan key:generate
-             php artisan migrate
+
+      - name: run unit test
+        run: vendor/bin/phpunit tests/
+        working-directory: ./src
 
   ftp-deploy:
     name: 🎉 Deploy
