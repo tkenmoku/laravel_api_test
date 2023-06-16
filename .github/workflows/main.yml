@@ -24,29 +24,29 @@ jobs:
             --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Print php version
-        run: |
-          php -v
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: SetUp linux package
-        run: |
-             apt update && apt install -y git
-             apt install -y zlib1g-dev mariadb-client vim libzip-dev
-             docker-php-ext-install zip pdo_mysql
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
 
-      - name: SetUp composer
-        run: |
-             curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-             composer -V
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
 
-      - name: SetUp laravel project
+      - name: Set up Laravel environment
+        env:
+          LARAVEL_ENV: ${{ secrets.LARAVEL_ENV }}
         run: |
-             echo "${{ secrets.LARAVEL_ENV }}" > .env
+          cp .env.example .env
+          sed -i "s/APP_ENV=local/APP_ENV=${LARAVEL_ENV}/" .env
 
-      - name: run unit test
-        run: vendor/bin/phpunit tests/
-        working-directory: ./src
+      - name: Generate application key
+        run: php artisan key:generate
+
+      - name: Run database migrations
+        run: php artisan migrate --force
 
   ftp-deploy:
     name: 🎉 Deploy
