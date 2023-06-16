@@ -35,8 +35,10 @@ jobs:
              apt install -y zlib1g-dev mariadb-client vim libzip-dev
              docker-php-ext-install zip pdo_mysql
 
-      - name: Install Composer dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist
+      - name: SetUp composer
+        run: |
+             curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+             composer -V
 
       - name: SetUp laravel project
         run: |
