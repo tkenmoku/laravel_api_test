@@ -35,6 +35,11 @@ jobs:
           php composer-setup.php --install-dir=/usr/local/bin --filename=composer
           php -r "unlink('composer-setup.php');"
 
+      - name: Initialize Laravel project
+        run: |
+          composer init --quiet --no-interaction
+          composer require laravel/laravel
+
       - name: Install Composer dependencies
         run: composer install --no-progress --no-suggest --prefer-dist
 
