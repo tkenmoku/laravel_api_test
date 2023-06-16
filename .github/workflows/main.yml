@@ -37,7 +37,7 @@ jobs:
 
       - name: Initialize Laravel project
         run: |
-          composer init --quiet --no-interaction
+          echo -e "y\n" | composer init --quiet --no-interaction
           composer require laravel/laravel
 
       - name: Install Composer dependencies
