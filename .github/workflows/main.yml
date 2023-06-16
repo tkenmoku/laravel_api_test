@@ -24,13 +24,10 @@ jobs:
             --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.0'
+      - uses: actions/checkout@v2
+      - name: Print php version
+        run: |
+          php -v
 
       - name: Install Composer dependencies
         run: composer install --no-progress --no-suggest --prefer-dist
