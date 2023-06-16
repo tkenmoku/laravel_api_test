@@ -42,7 +42,7 @@ jobs:
 
       - name: SetUp laravel project
         run: |
-             cp ../.env.example .env
+             echo "${{ secrets.LARAVEL_ENV }}" > .env
              php artisan key:generate
              php artisan migrate
 
