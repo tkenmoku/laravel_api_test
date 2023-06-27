@@ -29,6 +29,12 @@ jobs:
         run: |
           php -v
 
+      - name: Install Composer
+        run: |
+          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+          php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+          php -r "unlink('composer-setup.php');"
+
       - name: Install Composer dependencies
         run: composer install --no-progress --no-suggest --prefer-dist
 
