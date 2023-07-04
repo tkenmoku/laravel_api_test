@@ -24,7 +24,7 @@ jobs:
             --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: php-actions/composer@v6
       - name: Print php version
         run: |
