@@ -25,7 +25,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: php-actions/composer@v6
+
+      - name: Composer (php-actions)
+        uses: php-actions/composer@v6
+
       - name: Print php version
         run: |
           php -v
