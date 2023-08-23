@@ -7,10 +7,6 @@ on:
 jobs:
   laravel-build:
     runs-on: ubuntu-latest
-    container:
-      image: php:8.0-fpm
-      volumes:
-        - /__w/docker-laravel-phpunit-githubaction/docker-laravel-phpunit-githubaction:/var/www
 
     services:
       db-dl:
