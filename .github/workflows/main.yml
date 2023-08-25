@@ -38,6 +38,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
+      - name: cd laravel_api_test
+        run: cd laravel_api_test
+
       - name: ls -al
         run: ls -al
 
