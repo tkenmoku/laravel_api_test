@@ -10,7 +10,5 @@
 /storage/framework/views
 
 # ファイル
-.env
-.env.*
 .DS_Store
 Thumbs.db
