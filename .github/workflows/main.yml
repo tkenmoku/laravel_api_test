@@ -28,8 +28,23 @@ jobs:
           php-version: '8.2'
           tools: composer
 
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+      - name: cache vendor
+        id: cache
+        uses: actions/cache@v1
+        with:
+          ref: main
+          path: ./vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+  
+      - name: composer install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: composer install
+        working-directory: ./src
+
+##      - name: Install dependencies
+##        run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Print php version
         run: |
