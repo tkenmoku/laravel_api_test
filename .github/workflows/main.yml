@@ -38,17 +38,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      - name: ls -al
-        run: |
-          cd laravel_api_test
-          ls -al
-
       - name: composer install
         if: steps.cache.outputs.cache-hit != 'true'
-        run: composer install
-
-##      - name: Install dependencies
-##        run: composer install --prefer-dist --no-progress --no-suggest
+        run: |
+          cd laravel_api_test
+          composer install --prefer-dist --no-progress --no-suggest
 
       - name: Print php version
         run: |
