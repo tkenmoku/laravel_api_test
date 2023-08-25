@@ -37,7 +37,10 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-  
+
+      - name: ls -al
+        run: ls -al
+
       - name: composer install
         if: steps.cache.outputs.cache-hit != 'true'
         run: composer install
