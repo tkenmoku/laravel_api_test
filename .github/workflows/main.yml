@@ -7,6 +7,9 @@ on:
 jobs:
   laravel-build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: laravel_api_test
 
     services:
       db-dl:
@@ -40,13 +43,7 @@ jobs:
 
       - name: composer install
         if: steps.cache.outputs.cache-hit != 'true'
-        run: |
-          cd laravel_api_test
-          composer install --prefer-dist --no-progress --no-suggest
-
-      - name: Print php version
-        run: |
-          php -v
+        run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Set up Laravel environment
         run: cp .env.example .env
